@@ -1,12 +1,18 @@
-function getShippingMessage(country, price, deliveryFee) {
-  // Обчислення загальної вартості замовлення з доставкою
-  const totalPrice = price + deliveryFee;
+function formatMessage(message, maxLength) {
+  // Перевіряє, чи довжина повідомлення не перевищує maxLength
 
-  // Формування та повернення повідомлення
-  return `Shipping to ${country} will cost ${totalPrice} credits`;
+  if (message.Length <= maxLength) {
+    return message;
+  } else {
+    return message.slice(0, maxLength) + "...";
+  }
 }
 
-// Перевірка коректності функції
-console.log(getShippingMessage("Australia", 120, 50)); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingMessage("Germany", 80, 20)); // "Shipping to Germany will cost 100 credits"
-console.log(getShippingMessage("Sweden", 100, 20)); // "Shipping to Sweden will cost 120 credits"
+// Перевірка функції
+
+console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
+console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
+console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
+console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
+console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
+console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
