@@ -1,7 +1,7 @@
 function formatMessage(message, maxLength) {
   // Перевіряє, чи довжина повідомлення не перевищує maxLength
 
-  if (message.Length <= maxLength) {
+  if (message.length <= maxLength) {
     return message;
   } else {
     return message.slice(0, maxLength) + "...";
